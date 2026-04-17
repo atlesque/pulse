@@ -1,0 +1,37 @@
+{
+  "name": "pulse",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build --preset cloudflare_module",
+    "dev": "npm run db:migrate:local && npm run build && wrangler dev --config wrangler.toml --port 8787 --local",
+    "dev:test": "npm run build && wrangler dev --config wrangler.toml --port 8788 --local",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "db:migrate:local": "wrangler d1 migrations apply pulse --local",
+    "db:migrate:remote": "wrangler d1 migrations apply pulse",
+    "db:reset:local": "rm -rf .wrangler/state && npm run db:migrate:local",
+    "test:e2e": "playwright test",
+    "test": "npm run test:e2e"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.102",
+    "@iconify-json/simple-icons": "^1.2.78",
+    "@nuxt/ui": "^4.6.1",
+    "@tanstack/vue-query": "^5.99.0",
+    "nuxt": "^4.4.2",
+    "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260417.1",
+    "@nuxt/eslint": "^1.15.2",
+    "@playwright/test": "^1.59.1",
+    "eslint": "^10.2.0",
+    "typescript": "^6.0.2",
+    "vue-tsc": "^3.2.6",
+    "wrangler": "^4.83.0"
+  },
+  "packageManager": "pnpm@10.33.0"
+}
