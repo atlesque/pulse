@@ -1,0 +1,11 @@
+name = "pulse"
+main = ".output/server/index.mjs"
+compatibility_date = "2025-01-15"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pulse"
+database_id = "local-pulse-d1"
+preview_database_id = "local-pulse-d1"
+migrations_dir = "server/database/migrations"
